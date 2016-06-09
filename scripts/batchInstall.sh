@@ -31,21 +31,21 @@ sudo apt-get -y install git
 sudo apt-get install -y -q zsh
 
 # Clone oh-my-zsh
-if [ ! -d ~ubuntu/.oh-my-zsh ]; then
-  sudo git clone https://github.com/robbyrussell/oh-my-zsh.git ~ubuntu/.oh-my-zsh
+if [ ! -d ~vagrant/.oh-my-zsh ]; then
+  sudo git clone https://github.com/robbyrussell/oh-my-zsh.git ~vagrant/.oh-my-zsh
 fi
 
 # Create a new zsh configuration from the provided template
-sudo cp ~ubuntu/.oh-my-zsh/templates/zshrc.zsh-template ~ubuntu/.zshrc
+sudo cp ~vagrant/.oh-my-zsh/templates/zshrc.zsh-template ~vagrant/.zshrc
 
 # Change ownership of .zshrc
-sudo chown ubuntu: ~ubuntu/.zshrc
+sudo chown vagrant: ~vagrant/.zshrc
 
 # Customize theme
-sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="pygmalion"/' ~ubuntu/.zshrc
+sed -i -e 's/ZSH_THEME=".*"/ZSH_THEME="pygmalion"/' ~vagrant/.zshrc
 
 # add aliases
-sed -i -e 's/# Example aliases/source ~\/.bash_aliases/gi' ~ubuntu/.zshrc
+sed -i -e 's/# Example aliases/source ~\/.bash_aliases/gi' ~vagrant/.zshrc
 
 # Set zsh as default shell
-chsh -s /bin/zsh ubuntu
+chsh -s /bin/zsh vagrant
