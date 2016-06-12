@@ -49,3 +49,6 @@ sed -i -e 's/# Example aliases/source ~\/.bash_aliases/gi' ~vagrant/.zshrc
 
 # Set zsh as default shell
 chsh -s /bin/zsh vagrant
+
+# Likn synced folder with code to NGINX default.
+ln -sfn ~/www /usr/share/nginx/html
