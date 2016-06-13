@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 sudo apt-get -y update
 
 # Install NGINX
@@ -50,5 +49,17 @@ sed -i -e 's/# Example aliases/source ~\/.bash_aliases/gi' ~vagrant/.zshrc
 # Set zsh as default shell
 chsh -s /bin/zsh vagrant
 
-# Likn synced folder with code to NGINX default.
+##
+#  Configure Webserver
+##
+
+# Link synced folder with code to NGINX default.
 ln -sfn ~/www /usr/share/nginx/html
+
+# Delete default file
+rm -rf /etc/nginx/sites-available/default
+rm -rf /etc/nginx/nginx.conf
+
+# Copy template
+cp -a /home/vagrant/templates/nginx/default /etc/nginx/sites-available/default
+cp -a /home/vagrant/templates/nginx/nginx.conf /etc/nginx/nginx.conf
