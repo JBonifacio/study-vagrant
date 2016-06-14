@@ -54,7 +54,7 @@ chsh -s /bin/zsh vagrant
 ##
 
 # Link synced folder with code to NGINX default.
-ln -sfn ~/www /usr/share/nginx/html
+ln -sfn /home/vagrant/www /usr/share/nginx/html
 
 # Delete default file
 rm -rf /etc/nginx/sites-available/default
@@ -81,3 +81,4 @@ sudo chown www-data:www-data /var/run/php/php7.0-fpm.sock
 
 # Restart PHP server
 sudo service php7.0-fpm restart
+sudo service nginx restart
