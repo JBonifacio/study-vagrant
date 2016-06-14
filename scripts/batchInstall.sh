@@ -71,14 +71,16 @@ cp -a /home/vagrant/templates/nginx/nginx.conf /etc/nginx/nginx.conf
 # Delete default file
 rm -rf /etc/php/7.0/fpm/php-fpm.conf
 rm -rf /etc/php/7.0/fpm/php.ini
+rm -rf /etc/php/7.0/fpm/pool.d/www.conf
 
 # Copy template
 cp -a /home/vagrant/templates/php-fpm/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 cp -a /home/vagrant/templates/php-fpm/php.ini /etc/php/7.0/fpm/php.ini
-
-# Give access to socket
-sudo chown www-data:www-data /var/run/php/php7.0-fpm.sock
+cp -a /home/vagrant/templates/php-fpm/poold_www.conf /etc/php/7.0/fpm/pool.d/www.conf
 
 # Restart PHP server
 sudo service php7.0-fpm restart
 sudo service nginx restart
+
+# Give access to socket
+sudo chown www-data:www-data /var/run/php/php7.0-fpm.sock
