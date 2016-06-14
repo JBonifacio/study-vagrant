@@ -63,3 +63,21 @@ rm -rf /etc/nginx/nginx.conf
 # Copy template
 cp -a /home/vagrant/templates/nginx/default /etc/nginx/sites-available/default
 cp -a /home/vagrant/templates/nginx/nginx.conf /etc/nginx/nginx.conf
+
+##
+# Configure PHP
+##
+
+# Delete default file
+rm -rf /etc/php/7.0/fpm/php-fpm.conf
+rm -rf /etc/php/7.0/fpm/php.ini
+
+# Copy template
+cp -a /home/vagrant/templates/php-fpm/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
+cp -a /home/vagrant/templates/php-fpm/php.ini /etc/php/7.0/fpm/php.ini
+
+# Give access to socket
+sudo chown www-data:www-data /var/run/php/php7.0-fpm.sock
+
+# Restart PHP server
+sudo service php7.0-fpm restart

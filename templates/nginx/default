@@ -22,7 +22,7 @@ server {
 	listen [::]:80 default_server ipv6only=on;
 
 	root /home/vagrant/www;
-	index index.html index.htm index.nginx-debian.;
+	index index.html index.htm index.php index.nginx-debian.;
 
 	# Make site accessible from http://localhost/
 	server_name localhost;
