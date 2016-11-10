@@ -55,6 +55,9 @@ sed -i -e 's/# Example aliases/source ~\/.bash_aliases/gi' ~vagrant/.zshrc
 # Set zsh as default shell
 chsh -s /bin/zsh vagrant
 
+# Give vagrant user access to oh-my-zsh 
+sudo chown -R vagrant .oh-my-zsh .zsh*
+
 ##
 # Configure Postgres
 ##
@@ -65,7 +68,7 @@ sudo su postgres -c "psql -c \"CREATE ROLE vagrant SUPERUSER LOGIN PASSWORD 'vag
 # Create db
 sudo su postgres -c "createdb -O vagrant vagrant"
 
-## 
+##
 #  Configure Webserver
 ##
 
