@@ -11,10 +11,10 @@ the scripts to help clean this process up and protect your credentials at the sa
 time.
 
 ## Scripts
-`/scripts` should include "batchInstall.sh" which should install the
-necessary packages. It will also include a full useful scripts that should automate
-some of the busy work.  I haven't pushed out too many of them so far as some of them
-are dependent on my project rather than the actual dev-environment.
+`/scripts` should include "defaultProvision.sh" which installs some of the
+conveniences needed to get the vagrant up and running.  The bottom of the script
+allows you to source other bash scripts for setting up the environment.  Right
+now, there is a node.js environment and a php environment.
 
 ## Templates
 `/templates` has the very vanilla templates for NGINX, Ubuntu, PHP and Postgres.  You
@@ -22,12 +22,13 @@ can make the modifications you need here to get what you want out of the project
 
 ## Features
 
-* NGINX
-* PHP7
-* Postgres (also support for PHP7)
 * VIM (my terminal text editor of choice)
 * Git
 * zsh and oh-my-zsh
+* Optional Features
+  * NGINX-PHP7-Postgres environment
+  * node.js environment (currently in the workds)
+
 
 ## Install
 1. You need to install Vagrant to use my solution.  You can read more
