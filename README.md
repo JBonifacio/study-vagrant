@@ -16,6 +16,12 @@ conveniences needed to get the vagrant up and running.  The bottom of the script
 allows you to source other bash scripts for setting up the environment.  Right
 now, there is a node.js environment and a php environment.
 
+You might notice a provision line, which by default says this:
+
+`config.vm.provision :shell, path: "scripts/defaultProvision.sh"`
+
+This provision line runs one of the environment files also located in `/scripts`.  I have set up a few basic environments to get people up and running.
+
 ## Templates
 `/templates` has the very vanilla templates for NGINX, Ubuntu, PHP and Postgres.  You
 can make the modifications you need here to get what you want out of the project.
@@ -31,13 +37,24 @@ can make the modifications you need here to get what you want out of the project
 
 
 ## Install
+
+Before following the install installations below, verify you have the correct provision script in the script `defaultProvision.sh`.
+
+### MacOS
 1. You need to install Vagrant to use my solution.  You can read more
-[here](https://www.vagrantup.com/docs/installation/).
-2. From there, download, clone or fork this repository into a new directory.
-3. `cd ./student-vagrant`, or where you placed teh `Vagrantfile`.
+[here](https://www.vagrantup.com/docs/installation/).  You will also need to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads).  Note there are a few different ways to do this but those two links will allow you to manage it manually.  You are welcome to use a package manager like `brew` but those steps are not provided here.
+2. From there, download, clone or fork this repository into a new directory, `git clone git@github.com:JBonifacio/vagrant-jmb.git`
+3. `cd ./student-vagrant`, or where you placed the `Vagrantfile`.
 4. `vagrant up`
 5. Watch for errors.
 6. Upon completion of `vagrant up`, use `vagrant ssh` to access your shiny new toy.
+
+### Windows
+1. You need to install Vagrant to use my solution.  You can read more
+[here](https://www.vagrantup.com/docs/installation/).  You will also need to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+2. Clone or download the repository.  When I work on a Windows host, I use Github's tool instead of command line.
+3. Open a console/PowerShell in the directory you cloned the repo.
+4. `vagrant up`
 
 ## Guides
 ### Server
