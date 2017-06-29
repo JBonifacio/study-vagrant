@@ -41,4 +41,4 @@ chsh -s /bin/zsh vagrant
 sudo chown -R vagrant .oh-my-zsh .zsh*
 
 # Run additional scripts
-source /home/vagrant/scripts/nodeEnvironment.sh
+source /home/vagrant/scripts/phpApache2Environment.sh
