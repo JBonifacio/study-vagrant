@@ -80,3 +80,10 @@ On your host system, enter `localhost:8080/hello-world.php` into your browser to
 ## Troubleshooting
 ### Running `vagrant up` on Windows results in an error.  It reports the state is "powered off".
 If you are running into this error, you may need to look into virtualization for your hardware.  My PC uses an AMD processor.  This means I needed to disable Microsoft's Hyper-V and enable virtualization on my system's bios.
+
+### NFS is reporting that your exports file is invalid. Vagrant does this check before making any changes to the file. Please correct the issues below and execute "vagrant reload": exports:2: path contains non-directory or non-existent components
+If you receive this error when running `vagrant up`, it is the result of some issues with the exports folder saved by virtualbox.  You can solve it by running the following
+
+```
+sudo rm /etc/exports && sudo touch /etc/exports
+```
