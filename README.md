@@ -50,6 +50,14 @@ Before following the install installations below, verify you have the correct pr
 6. Upon completion of `vagrant up`, use `vagrant ssh` to access your shiny new toy.
 
 ### Windows
+
+Before using a Windows host, make sure you update your line endings to LF instead of CRF.  You can read more about this [here](http://developmentsindigital.com/atom/2016/08/27/setting-atom-default-line-endings/).
+
+* Select File->Settings
+* Select ‘Packages’
+* Under Core Packages->line-ending-selector, select ‘Settings’
+* Under the ‘Default line ending’ setting, choose ‘LF’ in the dropdown
+
 1. You need to install Vagrant to use my solution.  You can read more
 [here](https://www.vagrantup.com/docs/installation/).  You will also need to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 2. Clone or download the repository.  When I work on a Windows host, I use Github's tool instead of command line.
@@ -58,10 +66,10 @@ Before following the install installations below, verify you have the correct pr
 
 ## Guides
 ### Server
-You can use `localhost:8080` to access your app from your host computer.  Without making any changes, if you enter `localhost:8080` to your browser, you should be greated by the vanilla NGINX welcome page.  Currently, it looks like rerouting is not working as intended.
+You can use `192.168.50.51` to access your app from your host computer.  Without making any changes, if you enter `192.168.50.51` to your browser, you should be greated by the vanilla NGINX welcome page.  Currently, it looks like rerouting is not working as intended.
 
 ### Code
-You can place your code in `/study-vagrant/Code`.  When you provision, a folder called /study-vagrant/code should be created. This folder is shared with your virtual machine in `/home/vagrant/code`.
+You can place your code in `./vagrant-jmb/Code`.  When you provision, a folder called /study-vagrant/code should be created. This folder is shared with your virtual machine in `/home/vagrant/code`.
 ```
 # from host system
 cd /study-vagrant/code
@@ -75,7 +83,7 @@ Write and quit.  If NGINX is not running:
 ```
 sudo service nginx start
 ```
-On your host system, enter `localhost:8080/hello-world.php` into your browser to view your page.
+On your host system, enter `192.168.50.51/hello-world.php` into your browser to view your page.
 
 ## Troubleshooting
 ### Running `vagrant up` on Windows results in an error.  It reports the state is "powered off".

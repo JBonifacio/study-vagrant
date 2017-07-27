@@ -37,30 +37,34 @@ sudo su postgres -c "createdb -O vagrant vagrant"
 #  Configure Webserver
 ##
 
-# Link synced folder with code to NGINX default.
-ln -sfn /home/vagrant/code /usr/share/nginx/html
-
 # Delete default file
-rm -rf /etc/apache2/sites-enabled/000-default.conf
-rm -rf /etc/apache2/apache2.conf
+sudo rm -rf /etc/apache2/sites-enabled/000-default.conf
+sudo rm -rf /etc/apache2/apache2.conf
 
 # Copy template
-cp -a /home/vagrant/templates/apache2/000-default.conf /etc/apache2/sites-enabled/000-default.conf
-cp -a /home/vagrant/templates/apache2/apache2.conf /etc/apache2/apache2.conf
+sudo cp -a /home/vagrant/templates/apache2/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+sudo cp -a /home/vagrant/templates/apache2/apache2.conf /etc/apache2/apache2.conf
 
 ##
 # Configure PHP
 ##
 
 # Delete default file
-rm -rf /etc/php/7.0/fpm/php-fpm.conf
-rm -rf /etc/php/7.0/fpm/php.ini
-rm -rf /etc/php/7.0/fpm/pool.d/www.conf
+sudo rm -rf /etc/php/7.0/fpm/php-fpm.conf
+sudo rm -rf /etc/php/7.0/fpm/php.ini
+sudo rm -rf /etc/php/7.0/fpm/pool.d/www.conf
 
 # Copy template
-cp -a /home/vagrant/templates/php-fpm/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
-cp -a /home/vagrant/templates/php-fpm/php.ini /etc/php/7.0/fpm/php.ini
-cp -a /home/vagrant/templates/php-fpm/poold_www.conf /etc/php/7.0/fpm/pool.d/www.conf
+sudo cp -a /home/vagrant/templates/php-fpm/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
+sudo cp -a /home/vagrant/templates/php-fpm/php.ini /etc/php/7.0/fpm/php.ini
+sudo cp -a /home/vagrant/templates/php-fpm/poold_www.conf /etc/php/7.0/fpm/pool.d/www.conf
+
+# Install Composer Globally
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer
 
 # Restart PHP server
 sudo service php7.0-fpm restart
